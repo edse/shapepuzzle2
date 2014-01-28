@@ -185,13 +185,31 @@ module.exports = function (grunt) {
         },
 
         // Performs rewrites based on rev and the useminPrepare configuration
+        //usemin: {
+        //    options: {
+        //        assetsDirs: ['<%= yeoman.dist %>']
+        //    },
+        //    html: ['<%= yeoman.dist %>/{,*/}*.html'],
+        //    css: ['<%= yeoman.dist %>/styles/{,*/}*.css']
+        //},
+
+
+        // Performs rewrites based on rev and the useminPrepare configuration
         usemin: {
             options: {
-                assetsDirs: ['<%= yeoman.dist %>']
+                assetsDirs: ['<%= yeoman.dist %>'],
+                patterns: {
+                  // FIXME While usemin won't have full support for revved files we have to put all references manually here
+                  js: [
+                      [/(<%= yeoman.dist %>\/images\/.*?\.(?:gif|jpeg|jpg|png|webp|svg))/gm, 'Update the JS to reference our revved images']
+                  ]
+                }
             },
             html: ['<%= yeoman.dist %>/{,*/}*.html'],
-            css: ['<%= yeoman.dist %>/styles/{,*/}*.css']
+            css: ['<%= yeoman.dist %>/styles/{,*/}*.css'],
+            js: '<%= yeoman.dist %>/scripts/*.js'
         },
+
 
         // The following *-min tasks produce minified files in the dist folder
         imagemin: {

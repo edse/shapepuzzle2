@@ -317,7 +317,7 @@ function resizeGame() {
   if(game.started){
     game.resized = true;
     game.init();
-    game.puzle.init();
+    //game.puzle.init();
   }
 }
 

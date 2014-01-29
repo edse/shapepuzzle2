@@ -133,64 +133,64 @@ Game.prototype.init = function(){
       new Point2D(238,184),
       new Point2D(115,105),
       new Point2D(-200,50),
-      new Point2D(-62,157)))/*,
-    new Puzzle("004", this, {has_voice: true, has_sound: true}, {width: 298, height: 400}, new Point2D((this.canvas.width/2-467/2), (this.canvas.height/2-333/2)), new Array(
+      new Point2D(-62,157))),
+    new Puzzle("004", this, "images/004/004.png", new Array("images/004/p01.png","images/004/p02.png","images/004/p03.png","images/004/p04.png","images/004/p05.png","images/004/p06.png"), new Array("images/004/h01.png","images/004/h02.png","images/004/h03.png","images/004/h04.png","images/004/h05.png","images/004/h06.png"), {has_voice: true, has_sound: true}, {width: 298, height: 400}, new Point2D((this.canvas.width/2-467/2), (this.canvas.height/2-333/2)), new Array(
       new Point2D(0,173),
       new Point2D(49,66),
       new Point2D(207,0),
       new Point2D(286,24),
       new Point2D(115,120),
       new Point2D(170,115))),
-    new Puzzle("007", this, {has_voice: true, has_sound: false}, {width: 298, height: 400}, new Point2D((this.canvas.width/2-337/2)+3, (this.canvas.height/2-433/2)+5), new Array(
+    new Puzzle("007", this, "images/007/007.png", new Array("images/007/p01.png","images/007/p02.png","images/007/p03.png","images/007/p04.png","images/007/p05.png","images/007/p06.png"), new Array("images/007/h01.png","images/007/h02.png","images/007/h03.png","images/007/h04.png","images/007/h05.png","images/007/h06.png"), {has_voice: true, has_sound: false}, {width: 298, height: 400}, new Point2D((this.canvas.width/2-337/2)+3, (this.canvas.height/2-433/2)+5), new Array(
       new Point2D(0,61),
       new Point2D(144,0),
       new Point2D(27,38),
       new Point2D(26,58),
       new Point2D(95,226),
       new Point2D(193,215))),
-    new Puzzle("009", this, {has_voice: true, has_sound: true}, {width: 298, height: 400}, new Point2D((this.canvas.width/2-425/2)+5, (this.canvas.height/2-666/2)+10), new Array(
+    new Puzzle("009", this, "images/009/009.png", new Array("images/009/p01.png","images/009/p02.png","images/009/p03.png","images/009/p04.png","images/009/p05.png","images/009/p06.png"), new Array("images/009/h01.png","images/009/h02.png","images/009/h03.png","images/009/h04.png","images/009/h05.png","images/009/h06.png"), {has_voice: true, has_sound: true}, {width: 298, height: 400}, new Point2D((this.canvas.width/2-425/2)+5, (this.canvas.height/2-666/2)+10), new Array(
       new Point2D(79,0),
       new Point2D(0,118),
       new Point2D(54,512),
       new Point2D(294,538),
       new Point2D(102,346),
       new Point2D(247,341))),
-    new Puzzle("010", this, {has_voice: true, has_sound: true}, {width: 298, height: 400}, new Point2D((this.canvas.width/2-316/2), (this.canvas.height/2-446/2)+2), new Array(
+    new Puzzle("010", this, "images/010/010.png", new Array("images/010/p01.png","images/010/p02.png","images/010/p03.png","images/010/p04.png","images/010/p05.png","images/010/p06.png"), new Array("images/010/h01.png","images/010/h02.png","images/010/h03.png","images/010/h04.png","images/010/h05.png","images/010/h06.png"), {has_voice: true, has_sound: true}, {width: 298, height: 400}, new Point2D((this.canvas.width/2-316/2), (this.canvas.height/2-446/2)+2), new Array(
       new Point2D(4,0),
       new Point2D(12,90),
       new Point2D(0,276),
       new Point2D(162,272),
       new Point2D(12,363),
       new Point2D(162,363))),
-    new Puzzle("013", this, {has_voice: true, has_sound: true}, {width: 298, height: 400}, new Point2D((this.canvas.width/2-653/2), (this.canvas.height/2-433/2)+2), new Array(
-      new Point2D(0,112),
-      new Point2D(375,0),
-      new Point2D(81,0),
-      new Point2D(273,212),
-      new Point2D(364,212),
-      new Point2D(508,212))),
-    new Puzzle("014", this, {has_voice: true, has_sound: false}, {width: 298, height: 400}, new Point2D((this.canvas.width/2-515/2), (this.canvas.height/2-500/2)+2), new Array(
+    new Puzzle("013", this, "images/013/013.png", new Array("images/013/p01.png","images/013/p02.png","images/013/p03.png","images/013/p04.png","images/013/p05.png","images/013/p06.png"), new Array("images/013/h01.png","images/013/h02.png","images/013/h03.png","images/013/h04.png","images/013/h05.png","images/013/h06.png"), {has_voice: true, has_sound: true}, {width: 298, height: 400}, new Point2D((this.canvas.width/2-653/2), (this.canvas.height/2-433/2)+2), new Array(
+      new Point2D(-200,112),
+      new Point2D(175,0),
+      new Point2D(-119,0),
+      new Point2D(73,212),
+      new Point2D(164,212),
+      new Point2D(308,212))),
+    new Puzzle("014", this, "images/014/014.png", new Array("images/014/p01.png","images/014/p02.png","images/014/p03.png","images/014/p04.png","images/014/p05.png","images/014/p06.png"), new Array("images/014/h01.png","images/014/h02.png","images/014/h03.png","images/014/h04.png","images/014/h05.png","images/014/h06.png"), {has_voice: true, has_sound: false}, {width: 298, height: 400}, new Point2D((this.canvas.width/2-515/2), (this.canvas.height/2-500/2)+2), new Array(
       new Point2D(0,0),
       new Point2D(37,58),
       new Point2D(191,264),
       new Point2D(286,315),
       new Point2D(391,309),
       new Point2D(339,188))),
-    new Puzzle("017", this, {has_voice: true, has_sound: true}, {width: 298, height: 400}, new Point2D((this.canvas.width/2-540/2), (this.canvas.height/2-348/2)+2), new Array(
+    new Puzzle("017", this, "images/017/017.png", new Array("images/017/p01.png","images/017/p02.png","images/017/p03.png","images/017/p04.png","images/017/p05.png","images/017/p06.png"), new Array("images/017/h01.png","images/017/h02.png","images/017/h03.png","images/017/h04.png","images/017/h05.png","images/017/h06.png"), {has_voice: true, has_sound: true}, {width: 298, height: 400}, new Point2D((this.canvas.width/2-540/2), (this.canvas.height/2-348/2)+2), new Array(
       new Point2D(0,0),
       new Point2D(125,223),
       new Point2D(292,223),
       new Point2D(203,26),
       new Point2D(291,24),
       new Point2D(444,72))),
-    new Puzzle("018", this, {has_voice: true, has_sound: false}, {width: 298, height: 400}, new Point2D((this.canvas.width/2-671/2), (this.canvas.height/2-456/2)+2), new Array(
+    new Puzzle("018", this, "images/018/018.png", new Array("images/018/p01.png","images/018/p02.png","images/018/p03.png","images/018/p04.png","images/018/p05.png","images/018/p06.png"), new Array("images/018/h01.png","images/018/h02.png","images/018/h03.png","images/018/h04.png","images/018/h05.png","images/018/h06.png"), {has_voice: true, has_sound: false}, {width: 298, height: 400}, new Point2D((this.canvas.width/2-671/2), (this.canvas.height/2-456/2)+2), new Array(
       new Point2D(0,225),
       new Point2D(274,225),
       new Point2D(435,186),
       new Point2D(206,0),
       new Point2D(206,186),
       new Point2D(87,47))),
-    new Puzzle("019", this, {has_voice: true, has_sound: true}, {width: 298, height: 400}, new Point2D((this.canvas.width/2-455/2), (this.canvas.height/2-490/2)+2), new Array(
+    new Puzzle("019", this, "images/019/019.png", new Array("images/019/p01.png","images/019/p02.png","images/019/p03.png","images/019/p04.png","images/019/p05.png","images/019/p06.png","images/019/p07.png"), new Array("images/019/h01.png","images/019/h02.png","images/019/h03.png","images/019/h04.png","images/019/h05.png","images/019/h06.png","images/019/h07.png"), {has_voice: true, has_sound: true}, {width: 298, height: 400}, new Point2D((this.canvas.width/2-455/2), (this.canvas.height/2-490/2)+2), new Array(
       new Point2D(0,3),
       new Point2D(205,0),
       new Point2D(13,235),
@@ -198,7 +198,7 @@ Game.prototype.init = function(){
       new Point2D(159,404),
       new Point2D(297,404),
       new Point2D(374,263))),
-    new Puzzle("001", this, {has_voice: true, has_sound: false}, {width: 298, height: 400}, new Point2D((this.canvas.width/2-306/2), (this.canvas.height/2-347/2)-5), new Array(
+    new Puzzle("001", this, "images/001/001.png", new Array("images/001/p01.png","images/001/p02.png","images/001/p03.png","images/001/p04.png","images/001/p05.png","images/001/p06.png","images/001/p07.png"), new Array("images/001/h01.png","images/001/h02.png","images/001/h03.png","images/001/h04.png","images/001/h05.png","images/001/h06.png","images/001/h07.png"), {has_voice: true, has_sound: false}, {width: 298, height: 400}, new Point2D((this.canvas.width/2-306/2), (this.canvas.height/2-347/2)-5), new Array(
       new Point2D(0,14),
       new Point2D(89,0),
       new Point2D(90,34),
@@ -206,7 +206,7 @@ Game.prototype.init = function(){
       new Point2D(56,164),
       new Point2D(173,161),
       new Point2D(20,234))),
-    new Puzzle("002", this, {has_voice: true, has_sound: false}, {width: 298, height: 400}, new Point2D((this.canvas.width/2-475/2)+20, (this.canvas.height/2-376/2)+32), new Array(
+    new Puzzle("002", this, "images/002/002.png", new Array("images/002/p01.png","images/002/p02.png","images/002/p03.png","images/002/p04.png","images/002/p05.png","images/002/p06.png","images/002/p07.png","images/002/p08.png","images/002/p09.png"), new Array("images/002/h01.png","images/002/h02.png","images/002/h03.png","images/002/h04.png","images/002/h05.png","images/002/h06.png","images/002/h07.png","images/002/h08.png","images/002/h09.png"), {has_voice: true, has_sound: false}, {width: 298, height: 400}, new Point2D((this.canvas.width/2-475/2)+20, (this.canvas.height/2-376/2)+32), new Array(
       new Point2D(30,18),
       new Point2D(0,81),
       new Point2D(192,5),
@@ -216,7 +216,7 @@ Game.prototype.init = function(){
       new Point2D(259,172),
       new Point2D(184,152),
       new Point2D(120,138))),
-    new Puzzle("003", this, {has_voice: true, has_sound: false}, {width: 298, height: 400}, new Point2D((this.canvas.width/2-303/2), (this.canvas.height/2-355/2)-5), new Array(
+    new Puzzle("003", this, "images/003/003.png", new Array("images/003/p01.png","images/003/p02.png","images/003/p03.png","images/003/p04.png","images/003/p05.png","images/003/p06.png","images/003/p07.png","images/003/p08.png","images/003/p09.png","images/003/p10.png"), new Array("images/003/h01.png","images/003/h02.png","images/003/h03.png","images/003/h04.png","images/003/h05.png","images/003/h06.png","images/003/h07.png","images/003/h08.png","images/003/h09.png","images/003/h10.png"), {has_voice: true, has_sound: false}, {width: 298, height: 400}, new Point2D((this.canvas.width/2-303/2), (this.canvas.height/2-355/2)-5), new Array(
       new Point2D(96,0),
       new Point2D(16,23),
       new Point2D(97,87),
@@ -227,7 +227,7 @@ Game.prototype.init = function(){
       new Point2D(195,281),
       new Point2D(142,280),
       new Point2D(40,277))),
-    new Puzzle("020", this, {has_voice: false, has_sound: false}, {width: 298, height: 400}, new Point2D((this.canvas.width/2-330/2), (this.canvas.height/2-380/2)-5), new Array(
+    new Puzzle("020", this, "images/020/020.png", new Array("images/020/p01.png","images/020/p02.png","images/020/p03.png","images/020/p04.png","images/020/p05.png","images/020/p06.png","images/020/p07.png","images/020/p08.png"), new Array("images/020/h01.png","images/020/h02.png","images/020/h03.png","images/020/h04.png","images/020/h05.png","images/020/h06.png","images/020/h07.png","images/020/h08.png"), {has_voice: false, has_sound: false}, {width: 298, height: 400}, new Point2D((this.canvas.width/2-330/2), (this.canvas.height/2-380/2)-5), new Array(
       new Point2D(0,73),
       new Point2D(70,8),
       new Point2D(92,105),
@@ -235,7 +235,7 @@ Game.prototype.init = function(){
       new Point2D(234,278),
       new Point2D(52,273),
       new Point2D(204,215),
-      new Point2D(121,214)))*/
+      new Point2D(121,214)))
   ];
 
   this.puzzle = this.puzzles[this.stage-1];

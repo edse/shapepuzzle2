@@ -8,8 +8,13 @@ function Game(canvas) {
   this.fade2 = 0;
   this.resized = true;
   this.debug = false;
-
-  this.puzzle = new Puzzle("001", this, "", new Point2D(100,100), {width: 298, height: 400}, new Array());
+      
+  this.items_to_load = 4;
+  this.loaded_items = 0;
+  this.loaded = false;
+  this.interval = null;
+  this.maxElapsedTime = 0;
+  this.start_time = 0;
 
   //init
   this.canvas = document.getElementById('canvas');
@@ -28,13 +33,13 @@ function Game(canvas) {
   this.scaled_height = (this.canvas.height/this.scale)/2;
   console.log('scaled_width: '+this.scaled_width);
   console.log('scaled_height: '+this.scaled_height);
-      
-  this.items_to_load = 4;
-  this.loaded_items = 0;
-  this.loaded = false;
-  this.interval = null;
-  this.maxElapsedTime = 0;
-  this.start_time = 0;
+
+
+  this.puzzle = new Puzzle("006", this, "images/006/006.png", new Array("images/006/p01.png","images/006/p02.png","images/006/p03.png","images/006/p04.png"), new Array("images/006/h01.png","images/006/h02.png","images/006/h03.png","images/006/h04.png"), {has_voice: true, has_sound: true}, {width: 298, height: 400}, new Point2D((this.canvas.width/2-298/2)+5, (this.canvas.height/2-400/2)+5), new Array(
+      new Point2D(82,0),
+      new Point2D(0,193),
+      new Point2D(166,283),
+      new Point2D(65,127)));
 
   this.loadAssets();
 }
@@ -70,14 +75,6 @@ Game.prototype.init = function(){
   console.log('initing...')
   clearTimeout(this.iniTimeout);
   
-  /*
-  if(window.innerHeight <= 600){
-    this.context.scale(0.5,0.5);
-    this.scale = 0.5;
-  }else
-    this.scale = 1;
-  */
-
   //IMAGE SIZE
   if(this.resized)
     this.apply_scale();
@@ -93,8 +90,6 @@ Game.prototype.init = function(){
   this.is_over = false;
 
   this.num_pieces = 5;
-
-  //console.log(this.img.width+','+this.img.height)
   
   this.clock_interval = null;
   this.mouse = new Mouse(this);
@@ -105,11 +100,11 @@ Game.prototype.init = function(){
       new Point2D(0,193),
       new Point2D(166,283),
       new Point2D(65,127))),
-    new Puzzle("008", this, {has_voice: true, has_sound: false}, {width: 298, height: 400}, new Point2D((this.canvas.width/2-427/2)+5, (this.canvas.height/2-433/2)+5), new Array(
+    new Puzzle("008", this, "images/008/008.png", new Array("images/008/p01.png","images/008/p02.png","images/008/p03.png","images/008/p04.png"), new Array("images/008/h01.png","images/008/h02.png","images/008/h03.png","images/008/h04.png"), {has_voice: true, has_sound: false}, {width: 298, height: 400}, new Point2D((this.canvas.width/2-427/2)+5, (this.canvas.height/2-433/2)+5), new Array(
       new Point2D(28,0),
       new Point2D(0,257),
       new Point2D(58,109),
-      new Point2D(185,0))),
+      new Point2D(185,0)))/*,
     new Puzzle("005", this, {has_voice: true, has_sound: true}, {width: 298, height: 400}, new Point2D((this.canvas.width/2-346/2)+2, (this.canvas.height/2-425/2)+5), new Array(
       new Point2D(40,0),
       new Point2D(28,37),
@@ -240,12 +235,11 @@ Game.prototype.init = function(){
       new Point2D(234,278),
       new Point2D(52,273),
       new Point2D(204,215),
-      new Point2D(121,214)))
+      new Point2D(121,214)))*/
   ];
 
   this.puzzle = this.puzzles[this.stage-1];
   this.puzzle.init();
-
 };
 
 Game.prototype.render = function() {
@@ -441,15 +435,21 @@ Game.prototype.getTimer = function() {
 };
 
 Game.prototype.restart = function() {
-    this.resized = true;
-    this.init();
-    //this.puzle.init();
+  this.resized = true;
+  this.init();
+  //this.puzle.init();
 };
 
 Game.prototype.nextStage = function() {
-  this.is_over = false;
-  this.stage++;
-  this.num_lines++;
-  this.init();
-  startGame();
+  if(this.puzzles.length < this.stage+1){
+    this.is_over = true;
+    stopGame();
+  }else{
+    this.is_over = false;
+    this.stage++;
+    this.num_lines++;
+    this.init();
+    startGame();
+  }
 };
+

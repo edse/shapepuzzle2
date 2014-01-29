@@ -69,12 +69,10 @@ stopGame = function() {
   window.cancelAnimationFrame(game.interval);
 
   $('#home').addClass('active');
-
-  $('#play').show();
-  $('.control').hide();
-  
-  $('#canvas, #canvas_bg').hide();
-  $('.content').show();
+  $('#canvas, #canvas_bg, .abs, .control, #modal-success').hide();
+  $('#play, .content, .container').show();
+  $('#body').css('padding-top', '20px');
+  $('#body').css('margin-bottom', '20px');
 };
 
 startGame = function() {
@@ -430,5 +428,9 @@ $(function() {
   
   $("#modal-success").removeClass('show');
 
+
+  $("#btn-home").click(function() {
+    self.location.href="./index.html";
+  });
 
 });

@@ -9,7 +9,7 @@
  *   constructor
  *
  *****/
-function Puzzle(id, game, img, imgp, imgh, sound, size, pos, positions) {
+function Puzzle(id, game, image, imgp, imgh, sound, size, pos, positions) {
   
   //console.log(id)
   //console.log(positions)
@@ -34,7 +34,7 @@ function Puzzle(id, game, img, imgp, imgh, sound, size, pos, positions) {
     this.height = size.height;
   }
   
-  this.img = img;
+  this.image = image;
   this.imgp = imgp;
   this.imgh = imgh;
 }
@@ -44,11 +44,11 @@ Puzzle.prototype.loadAssets = function() {
   //IMAGE
   this.img = new Image();
   //this.img.src = "images/"+this.id+"/"+this.id+".png";
-  this.img.src = this.img;
+  this.img.src = this.image;
   this.img.onload = this.loaded_items++;
 
   //PIECES & HOLDERS
-  for(i=1; i<=this.num_pieces; i++){
+  for(i=0; i<this.num_pieces; i++){
     //HODLER IMAGE
     var h = new Image();
     /*
@@ -144,8 +144,8 @@ Puzzle.prototype.placeHolder = function(id, img){
   
   //var x = this.positions[id-1].x+this.pos.x;
   //var y = this.positions[id-1].y+this.pos.y;
-  var x = this.positions[id-1].x+this.pos.xx;
-  var y = this.positions[id-1].y+this.pos.yy;
+  var x = this.positions[id].x+this.pos.xx;
+  var y = this.positions[id].y+this.pos.yy;
   //alert('x:'+x+' y:'+y)
   temp = new Holder(
     id,

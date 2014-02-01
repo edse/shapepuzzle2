@@ -76,7 +76,7 @@ stopGame = function() {
 };
 
 startGame = function() {
-  $('html, body').animate({ scrollTop: 0 }, 'fast');
+  window.scrollTo(0, 0);
   
   //IOS
   iOS = false;
@@ -99,7 +99,9 @@ startGame = function() {
   if(iOS)
     game.drip.play();
 
-  $('#home').removeClass('active');
+  $('#modal-success').removeClass('show');
+  //$("#modal-success").css("top", "-2000px");
+  
   $('#canvas, .control, .abs').show();
   $('.content, #play, #exitfullscreen, #bgm, #sfx, #autosnap').hide();
   $('.container, .footer').hide();
@@ -328,6 +330,7 @@ window.addEventListener('orientationchange', resizeGame, false);
 //
 
 $(function() {
+  /*
   $("#test").popover({
     animation: true,
     placement: 'right',
@@ -338,6 +341,7 @@ $(function() {
   $(".tooltip-test").tooltip();
   
   $("#promo").alert();
+  */
   
   //$('#modal-success').modal();
     
@@ -376,11 +380,12 @@ $(function() {
     }
   });
   
+  /*
   $("#test").click(function() {
     start();
-    setTimeout('$(\'#test\').popover(\'hide\')', 1500);
+    //setTimeout('$(\'#test\').popover(\'hide\')', 1500);
   });
-
+  */
   
   $("#play, #btn-play, #play-btn-lg").click(function() {
     start();
@@ -426,8 +431,9 @@ $(function() {
     start();
   });
   
-  $("#modal-success").removeClass('show');
-
+  //$("#modal-success").removeClass('show');
+  
+  $("#modal-success").css("height", game.canvas.height+"px");
 
   $("#btn-home").click(function() {
     self.location.href="./index.html";

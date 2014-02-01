@@ -109,3 +109,7 @@ body {
     display: none!important;
   }
 }
+
+#modal-success {
+  top: -2000px;
+}

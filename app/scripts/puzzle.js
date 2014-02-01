@@ -165,7 +165,12 @@ Puzzle.prototype.draw = function(){
     $('#stage').html("Stage "+this.game.stage+" completed!");
     $('#pieces').html(this.num_pieces+" pieces in "+(this.time_to_complete-this.remaining_time)+"s");
     this.solved = false;
-    $('#modal-success').fadeIn();
+
+    setTimeout(function(){
+      $("#modal-success").css("top", "0px");
+      $('#modal-success').addClass("show");
+    }, 2500);
+
     if(!iOS){
       /*
       if(this.has_voice && this.has_sound){

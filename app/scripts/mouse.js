@@ -132,7 +132,7 @@ Mouse.prototype.onPointerMove = function(e) {
  *
  *****/
 Mouse.prototype.onPointerDown = function(e) {
-  this.touches = e.getPointerList()
+  this.touches = e.getPointerList();
   if(this.touches[0]){
     var touch = this.touches[0];
     var xx = touch.x/this.game.scale;
@@ -169,7 +169,7 @@ Mouse.prototype.onPointerDown = function(e) {
   if(this.game.debug){
     console.log('down ('+this.game.over.id+') '+this.x+', '+this.y);
   }
-}
+};
 
 /*****
  *
@@ -177,7 +177,7 @@ Mouse.prototype.onPointerDown = function(e) {
  *
  *****/
 Mouse.prototype.onPointerUp = function(e) {
-  this.touches = e.getPointerList()
+  this.touches = e.getPointerList();
   if(this.touches[0]){
     var touch = this.touches[0];
     var xx = touch.x/this.game.scale;
@@ -200,19 +200,24 @@ Mouse.prototype.onPointerUp = function(e) {
     //sfx
     if(this.game.drip.currentTime != 0)
       this.game.drip.currentTime = 0;
-    this.game.drip.play();
+    if(!iOS){
+      this.game.drip.src = "/audio/drip.mp3";
+      this.game.drip.play();
+    }
   }else if((this.game.selected)&&(!this.game.selected.near())){
-    this.game.selected.p = 0
+    this.game.selected.p = 0;
     this.game.selected.moveble = false;
     this.game.selected.placed = false;
     //sfx
     if(!iOS){
-      if(game.twang.currentTime != 0)
-        game.twang.currentTime = 0;
-      game.twang.play();
+      //if(game.twang.currentTime != 0)
+        //game.twang.currentTime = 0;
+      this.game.twang.play();
     }else{
-      game.drip.src = "/audio/twang.mp3";
-      game.drip.play();
+      //game.drip.src = "/audio/twang.mp3";
+      //game.drip.play();
+      this.game.twang.src = "/audio/twang.mp3";
+      this.game.twang.play();
     }
   }
 
@@ -223,4 +228,4 @@ Mouse.prototype.onPointerUp = function(e) {
     console.log('up');
   }
 
-}
+};

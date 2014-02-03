@@ -1,3 +1,10 @@
+//IOS
+iOS = false;
+p = navigator.platform;
+if( p === 'iPad' || p === 'iPhone' || p === 'iPhone Simulator' || p === 'iPod' )
+  iOS = true;
+console.log("iOS? "+iOS);
+
 // polyfill for animation frame
 ( function() {
   
@@ -75,14 +82,8 @@ stopGame = function() {
   $('#body').css('margin-bottom', '20px');
 };
 
-startGame = function() {
+startGame = function() {  
   window.scrollTo(0, 0);
-  
-  //IOS
-  iOS = false;
-  p = navigator.platform;
-  if( p === 'iPad' || p === 'iPhone' || p === 'iPhone Simulator' || p === 'iPod' )
-    iOS = true;
   
   gameInterval = setInterval(function() { game.puzzle.remaining_time--; },1000);
   game.started = true;
@@ -91,13 +92,12 @@ startGame = function() {
   startBGM();
   loop();
 
+  game.drip.play();
   //game.twang.play();
   //game.drip.play();
   //game.drip.src = game.twang.src;
   //setTimeout("game.drip.play()",1000)
   //game.drip.play();
-  if(iOS)
-    game.drip.play();
 
   $('#modal-success').removeClass('show');
   //$("#modal-success").css("top", "-2000px");
@@ -116,6 +116,11 @@ pauseGame = function() {
 
   $('#play').show();
   $('.control').hide();  
+};
+
+pauseClock = function() {
+  clearInterval(gameInterval);
+  game.started = false;  
 };
 
 restartGame = function() {
@@ -147,14 +152,19 @@ stopBGM = function() {
 
 startBGM = function() {
   if(iOS){
-    $('#bgmoff').hide();
+    $('#bgmoff').show();
     $('#bgm').hide();
-    //alert('ios')
+    if(game.bgm.currentTime <= 0){
+      game.bgm.src = "/audio/01_Alex_Must_Once_Upon_a_Time.mp3";
+      game.bgm.play();
+    }
+    console.log("startBGM-ios");
   }else{
     game.bgm.volume = 1.0;
     game.bgm.play();
     $('#bgmoff').show();
     $('#bgm').hide();
+    console.log("startBGM");
   }
 };
 
@@ -220,6 +230,7 @@ function loop() {
 function loadAssetsI(g,assets) {
   //alert('>>'+atttr);
   for(i=0; i<assets.length; i++){
+    console.log("Loading: "+assets[i].slug);
     if(assets[i].type == "image"){
       //IMAGE
       eval("g."+assets[i].slug+' = new Image();');
@@ -241,6 +252,7 @@ function loadAssetsI(g,assets) {
       }
       if(source.src != ""){
         eval("g."+assets[i].slug+'.appendChild(source);');
+        console.log("g."+assets[i].slug+'.appendChild(source);');
       }
       else{
         // no MP3 or OGG audio support
@@ -346,15 +358,17 @@ $(function() {
   //$('#modal-success').modal();
     
   $("#next").click(function() {
-    if(game.puzzle.has_voice){
-      game.puzzle.voice.pause();
-      game.puzzle.voice.currentTime = 0;
-      $("#btn_voice").removeClass('disabled');
-    }
-    if(game.puzzle.has_sound){
-      game.puzzle.sound.pause();
-      game.puzzle.sound.currentTime = 0;
-      $("#btn_sound").removeClass('disabled');
+    if(!iOS){
+      if(game.puzzle.has_voice){
+        game.puzzle.voice.pause();
+        game.puzzle.voice.currentTime = 0;
+        $("#btn_voice").removeClass('disabled');
+      }
+      if(game.puzzle.has_sound){
+        game.puzzle.sound.pause();
+        game.puzzle.sound.currentTime = 0;
+        $("#btn_sound").removeClass('disabled');
+      }
     }
     game.nextStage();
     $('#modal-success').fadeOut();

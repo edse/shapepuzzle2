@@ -10,6 +10,9 @@
         <meta name="description" content="HTML5 Version of the game the preschool kids love featuring: Canvas, Image manipulation, RequestAnimationFrame, Fullscreen API, Application Cache API, Audio API, Mouse, keyboard, and touch support">
         <meta name="author" content="Emerson Estrella">
         <meta name="viewport" content="width=device-width">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
         <!-- build:css styles/vendor.css -->
         <!-- bower:css -->
@@ -129,7 +132,6 @@
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h1 class="modal-title" id="myModalLabel">Yes, you did it!</h1>
               </div>
               <div class="modal-body">
@@ -144,7 +146,11 @@
                 </p>
               </div>
               <div class="modal-footer">
-                <button id="next" type="button" class="btn btn-primary">Next Stage</button>
+                <div class="btn-group">
+                  <button type="button" class="btn btn-primary" id="btn_voice">Voice</button>
+                  <button type="button" class="btn btn-primary" id="btn_sound">Sound</button>
+                  <button type="button" class="btn btn-danger" id="next">Next Stage</button>
+                </div>
               </div>
             </div><!-- /.modal-content -->
           </div><!-- /.modal-dialog -->

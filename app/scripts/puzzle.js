@@ -75,7 +75,7 @@ Puzzle.prototype.loadAssets = function() {
   }
   
   //VOICE & SOUNDS
-  var sounds = []
+  var sounds = [];
   if(this.has_voice){
     $('#btn_voice').show();
     sounds.push({
@@ -165,38 +165,39 @@ Puzzle.prototype.draw = function(){
     $('#stage').html("Stage "+this.game.stage+" completed!");
     $('#pieces').html(this.num_pieces+" pieces in "+(this.time_to_complete-this.remaining_time)+"s");
     this.solved = false;
-
-    setTimeout(function(){
-      $("#modal-success").css("top", "0px");
-      $('#modal-success').addClass("show");
-    }, 2500);
-
+    
+    pauseClock();
     if(!iOS){
-      /*
       if(this.has_voice && this.has_sound){
-        game.chimes.addEventListener('ended', function(){
-          this.currentTime = 0;
-          this.pause();
-          game.puzzle.voice.play();
-        });
+        console.log("voice & sound");      
         this.voice.addEventListener('ended', function(){
-          this.currentTime = 0;
-          this.pause();
           game.puzzle.sound.play();
         });
+        this.sound.addEventListener('ended', function(){
+          $("#modal-success").css("top", "0px");
+          $('#modal-success').addClass("show");
+        });
+        game.puzzle.voice.play();
       }
       else if(this.has_voice && !this.has_sound){
-        game.chimes.addEventListener('ended', function(){
-          this.currentTime = 0;
-          this.pause();
-          game.puzzle.voice.play();
+        console.log("voice only");
+        this.voice.addEventListener('ended', function(){
+          $("#modal-success").css("top", "0px");
+          $('#modal-success').addClass("show");
         });
+        game.puzzle.voice.play();
       }
-      */
-      game.chimes.play();
-    }else{
-      game.drip.src = "/audio/chimes.mp3";
-      game.drip.play();
+      else{
+        game.chimes.play();
+        console.log("none");
+        $("#modal-success").css("top", "0px");
+        $('#modal-success').addClass("show");
+      }
+    }
+    else{
+      console.log("iOS");
+      $("#modal-success").css("top", "0px");
+      $('#modal-success').addClass("show");
     }
   }
   else{

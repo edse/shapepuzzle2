@@ -100,9 +100,11 @@ Piece.prototype.draw = function() {
         this.game.placed_pieces.push(this.game.selected);
         //sfx
         if(!iOS){
-          if(game.drip.currentTime != 0)
-            game.drip.currentTime = 0;
+          //if(game.drip.currentTime != 0)
+            //game.drip.currentTime = 0;
+          game.drip.src = "/audio/drip.mp3";
           game.drip.play();
+          //game.drip.play();
         }else{
           game.drip.src = "/audio/drip.mp3";
           game.drip.play();

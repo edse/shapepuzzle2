@@ -125,7 +125,7 @@ Piece.prototype.draw = function() {
     console.log('pieace: '+this.id+' drew at: '+this.position.x+', '+this.position.y);
   }
   */
-}
+};
 
 Piece.prototype.near = function() {
   //target distance
@@ -142,8 +142,8 @@ Piece.prototype.near = function() {
   }
   */
   return r;
-}
+};
 
 Piece.prototype.mouse_is_over = function() {
   return this.game.mouse.isOverPiece(this);
-}
+};

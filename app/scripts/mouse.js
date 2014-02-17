@@ -23,11 +23,20 @@ function Mouse(game) {
   //this.element = window;
   this.element = document.getElementById('canvas');
   
-  this.element.addEventListener('pointerdown', function(e){ me.onPointerDown(e) }, false );
-  this.element.addEventListener('pointermove', function(e){ me.onPointerMove(e) }, false );
-  this.element.addEventListener('pointerup', function(e){ me.onPointerUp(e) }, false );
-  
-
+  if (Modernizr.touch) {   
+    console.log('Touch supported');
+    this.element.touchstart = function(e){ me.onPointerDown(e); };
+    this.element.touchmove = function(e){ me.onPointerMove(e); };
+    this.element.touchend = function(e){ me.onPointerUp(e); };
+    this.element.touchcancel = function(e){ me.onPointerUp(e); };
+    this.element.touchleave = function(e){ me.onPointerUp(e); };
+  } else {   
+    console.log('Touch NOT supported');
+    this.element.onmousedown = function(e){ me.onPointerDown(e); };
+    this.element.onmousemove = function(e){ me.onPointerMove(e); };
+    this.element.onmouseup = function(e){ me.onPointerUp(e); };
+    this.element.onmouseout = function(e){ me.onPointerUp(e); };
+  }  
 }
 
 /*****
@@ -48,7 +57,7 @@ Mouse.prototype.isOverBall = function(ball) {
     }
   }
   return r;
-}
+};
 
 /*****
  *
@@ -72,7 +81,7 @@ Mouse.prototype.isOverPiece = function(piece) {
     console.log('over '+piece.id+': '+c);
 
   return c;
-}
+};
 
 /*****
  *
@@ -92,7 +101,7 @@ Mouse.prototype.isOverRect = function(p1, p2, p3, p4) {
       && (pt.x < (poly[j].x - poly[i].x) * (pt.y - poly[i].y) / (poly[j].y - poly[i].y) + poly[i].x)
       && (c = !c);
   return c;
-}
+};
 
 /*****
  *
@@ -100,31 +109,18 @@ Mouse.prototype.isOverRect = function(p1, p2, p3, p4) {
  *
  *****/
 Mouse.prototype.onPointerMove = function(e) {
-  
-  //this.touches = e.getPointerList();
-  this.touches = e.getPointerList()
-  //for(var i=0; i<touches.length; i++){
-    if(this.touches[0]){
-      var touch = this.touches[0];
-      var xx = touch.x/this.game.scale;
-      var yy = touch.y/this.game.scale;
-      this.x = xx;
-      this.y = yy;
-    }
-//  }
+  this.x = e.x/this.game.scale;
+  this.y = e.y/this.game.scale;
 
   this.moving = true;
   interv();
-  this.x = xx;
-  this.y = yy;
   this.event = e;
   
   if(this.game.debug){
-    console.log('move: '+xx+', '+yy);
     console.log('move: '+this.x+', '+this.y);
   }
 
-}
+};
 
 /*****
  *
@@ -132,15 +128,14 @@ Mouse.prototype.onPointerMove = function(e) {
  *
  *****/
 Mouse.prototype.onPointerDown = function(e) {
-  this.touches = e.getPointerList();
-  if(this.touches[0]){
-    var touch = this.touches[0];
-    var xx = touch.x/this.game.scale;
-    var yy = touch.y/this.game.scale;
-    this.x = xx;
-    this.y = yy;
+  
+  if(this.game.debug){
+    console.log('onPointerDown');
   }
 
+  this.x = e.x/this.game.scale;
+  this.y = e.y/this.game.scale;
+  
   this.down = true;
   this.up = false;
   this.event = e;
@@ -161,7 +156,7 @@ Mouse.prototype.onPointerDown = function(e) {
         over = true;
       if(over && !this.game.selected){
         this.game.over = piece;
-        this.game.selected = this.game.over
+        this.game.selected = this.game.over;
       }
     }
   }
@@ -177,14 +172,8 @@ Mouse.prototype.onPointerDown = function(e) {
  *
  *****/
 Mouse.prototype.onPointerUp = function(e) {
-  this.touches = e.getPointerList();
-  if(this.touches[0]){
-    var touch = this.touches[0];
-    var xx = touch.x/this.game.scale;
-    var yy = touch.y/this.game.scale;
-    this.x = xx;
-    this.y = yy;
-  }
+  this.x = e.x/this.game.scale;
+  this.y = e.y/this.game.scale;
 
   this.up = true;
   this.down = false;

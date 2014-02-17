@@ -57,10 +57,10 @@ if(Modernizr.fullscreen){
 var game = new Game();
 var interval = null;
 var gameInterval = null;
-game.debug = false;
+game.debug = true;
 
 interv = function() {
-  interval = setTimeout("game.mouse.moving = false; document.getElementById('moving').value = false; intervClear();", 500);
+  interval = setTimeout("game.mouse.moving = false; document.getElementById('moving').value = false; intervClear();", 1000);
 };
 
 intervClear = function() {
